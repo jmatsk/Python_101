@@ -104,4 +104,3 @@ cmds.parent('elbow_fk_ctrl_grp','shoulder_fk_ctrl')
 cmds.parent('wrist_fk_ctrl_grp','elbow_fk_ctrl')
 
 cmds.select(cl=True)
-
