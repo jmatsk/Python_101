@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1410b99c-2505-4d9d-a883-a8e18ce4b876" name="Default" comment="" />
+    <list default="true" id="1410b99c-2505-4d9d-a883-a8e18ce4b876" name="Default" comment="test update; reduce spaces">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/jmatsk.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jmatsk/rig_arm.py" beforeDir="false" afterPath="$PROJECT_DIR$/jmatsk/rig_arm.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +24,7 @@
   </component>
   <component name="ProjectId" id="1jnNp116WHXjHTaKpjEeB5PLavt" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="C:/Program Files/Git/bin/git.exe" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
@@ -118,6 +123,21 @@
       <option name="presentableId" value="Default" />
       <updated>1488570271749</updated>
     </task>
+    <task id="LOCAL-00001" summary="test update; reduce spaces">
+      <created>1606068164718</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1606068164718</updated>
+    </task>
+    <task id="LOCAL-00002" summary="test update; reduce spaces">
+      <created>1606068381009</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1606068381009</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -140,5 +160,9 @@
     <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
       <collection />
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="test update; reduce spaces" />
+    <option name="LAST_COMMIT_MESSAGE" value="test update; reduce spaces" />
   </component>
 </project>
