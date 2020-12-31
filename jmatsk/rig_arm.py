@@ -3,6 +3,7 @@ cmds.select(cl=True)
 cmds.select(all=True)
 cmds.delete()
 
+### Rig joints ###
 cmds.joint (n = 'shoulder_jnt', p = [0, 0, 0] )
 # print cmds.joint ('shoulder', p=True, q=True)
 # cmds.joint ('shoulder', p=[0,0,0], e=True)
@@ -14,6 +15,8 @@ cmds.joint (n='wrist_jnt', p = [14, 0, 0] )
 # move shoulder joint to origin 000
 # cmds.joint ('shoulder_jnt', p=[0,0,0], e=True)
 
+
+### IK arm joints ###
 cmds.select(cl=True)
 # create ik arm joints
 cmds.joint (n = 'ik_shoulder_jnt', p = [0, 0, 0] )
@@ -23,16 +26,17 @@ cmds.joint (n='ik_wrist_jnt', p = [14, 0, 0] )
 # create ik handle on ik arm joints
 cmds.ikHandle (n='ikSolver_arm', sj='ik_shoulder_jnt', ee='ik_wrist_jnt', sol='ikRPsolver')
 
+
+### FK arm joints ###
 cmds.select(cl=True)
 # create fk arm joints
-cmds.joint (p = (0, 0, 0), n = 'fk_shoulder_jnt')
-cmds.joint (p = (7, 0, -0.3), n = 'fk_elbow_jnt' )
+cmds.joint (p = (0, 0, 0), n='fk_shoulder_jnt')
+cmds.joint (p = (7, 0, -0.3), n='fk_elbow_jnt')
 cmds.joint (p = (14, 0, 0), n='fk_wrist_jnt')
 
-cmds.select(cl=True)
 
 ### IK controls ###
-
+cmds.select(cl=True)
 # create ik control grouper
 cmds.group(em=True, name='wrist_ik_ctrl_grp')
 
@@ -54,13 +58,39 @@ cmds.makeIdentity(apply=True)
 cmds.select(cl=True)
 # point constrain ik handle to ik wrist ctrl
 cmds.pointConstraint('wrist_ik_ctrl','ikSolver_arm')
-
 # orient constrain ik wrist joint to ik wrist control
 cmds.orientConstraint('wrist_ik_ctrl','ik_wrist_jnt')
 
 
-### FK controls ###
+### IK pole vector ###
+cmds.select(cl=True)
 
+# create locator for elbow PV
+cmds.spaceLocator(n='loc_elbow_pv')
+
+# get pos of ik elbow joint
+posElbow = cmds.xform('ik_elbow_jnt', q=True, t=True, ws=True)
+
+# move pv loc to elbow joint pos
+cmds.xform('loc_elbow_pv', t=posElbow)
+
+### attempted some convoluted nonsense to move elbow PV further into -Z, then discovered the Move command ###
+# posLocElbTZ = cmds.getAttr('loc_elbow_pv.translateZ')
+# pvMove = posLocElbTZ - 2
+# print pvMove
+
+cmds.select('loc_elbow_pv')
+cmds.move(-7.5, z=1)
+cmds.select(cl=True)
+
+# create pole vector constraint between IK handle and new elbow locator
+cmds.poleVectorConstraint('loc_elbow_pv','ikSolver_arm')
+
+# create nurbs circle, snap to PV locator, point constrain PV loc to nurbs circle
+
+
+### FK controls ###
+cmds.select(cl=True)
 # create nurbs circle for FK joints
 cmds.circle(n='shoulder_fk_ctrl', r=2, nr=[1,0,0])
 cmds.circle(n='elbow_fk_ctrl', r=2, nr=[1,0,0])
@@ -104,3 +134,4 @@ cmds.parent('elbow_fk_ctrl_grp','shoulder_fk_ctrl')
 cmds.parent('wrist_fk_ctrl_grp','elbow_fk_ctrl')
 
 cmds.select(cl=True)
+
